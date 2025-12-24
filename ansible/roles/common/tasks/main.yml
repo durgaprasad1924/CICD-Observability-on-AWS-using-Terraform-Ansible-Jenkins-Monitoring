@@ -1,0 +1,11 @@
+- name: Update packages
+  yum:
+    update_cache: yes
+
+- name: Install basic utilities
+  yum:
+    name:
+      - git
+      - wget
+    state: present
+

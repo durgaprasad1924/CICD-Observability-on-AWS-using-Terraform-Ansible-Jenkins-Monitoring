@@ -1,0 +1,26 @@
+- name: Import Grafana GPG key
+  rpm_key:
+    state: present
+    key: https://rpm.grafana.com/gpg.key
+
+- name: Add Grafana repository
+  yum_repository:
+    name: grafana
+    description: Grafana Repository
+    baseurl: https://rpm.grafana.com
+    repo_gpgcheck: yes
+    gpgcheck: yes
+    gpgkey: https://rpm.grafana.com/gpg.key
+    enabled: yes
+
+- name: Install Grafana
+  yum:
+    name: grafana
+    state: present
+
+- name: Start and enable Grafana
+  service:
+    name: grafana-server
+    state: started
+    enabled: yes
+
