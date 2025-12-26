@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/durgaprasad1924/CICD-Observability-on-AWS-using-Terraform-Ansible-Jenkins-Monitoring.git/devops-cicd-observability.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t flask-app ./docker'
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                sh 'docker rm -f flask || true'
+                sh 'docker run -d -p 5000:5000 --name flask flask-app'
+            }
+        }
+    }
+}
+
+
