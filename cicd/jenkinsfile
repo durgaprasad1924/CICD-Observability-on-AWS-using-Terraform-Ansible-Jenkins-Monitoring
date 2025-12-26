@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/durgaprasad1924/CICD-Observability-on-AWS-using-Terraform-Ansible-Jenkins-Monitoring.git/devops-cicd-observability.git'
-            }
+                git 'https://github.com/durgaprasad1924/CICD-Observability-on-AWS-using-Terraform-Ansible-Jenkins-Monitoring.git'
+		 }
         }
 
         stage('Build Docker Image') {
